@@ -1,0 +1,15 @@
+.service-edit .information-section {
+    margin-bottom: 1rem;
+}
+
+.service-edit .information-section .tooltip {
+    margin-left: 0.25rem;
+}
+
+.service-edit .features .feature .anticon {
+    margin-right: 0.25rem;
+}
+
+.service-edit .types .ant-table {
+    border: none;
+}

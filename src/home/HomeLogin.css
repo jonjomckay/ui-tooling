@@ -1,0 +1,21 @@
+.home-login {
+    margin-top: 10%;
+}
+
+.home-login .brand {
+    margin: 0 auto 3rem;
+    max-width: 50%;
+}
+
+.home-login .form {
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.home-login .forgot {
+    float: right;
+}
+
+.home-login .button {
+    width: 100%;
+}

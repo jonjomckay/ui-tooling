@@ -1,0 +1,15 @@
+.players .actions {
+    display: flex;
+}
+
+.players .actions .select {
+    width: 25rem;
+}
+
+.players .actions .button-new {
+    margin-left: 1rem;
+}
+
+.players .actions .buttons {
+    margin-left: auto;
+}

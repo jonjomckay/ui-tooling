@@ -1,0 +1,8 @@
+.home-tenant-selector {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.home-tenant-selector .tenant {
+    cursor: pointer;
+}

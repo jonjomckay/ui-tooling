@@ -1,0 +1,7 @@
+.flows .flow {
+    margin: 0 0.4rem 1rem;
+}
+
+.flows .flow .ant-card-meta {
+    height: 7.5rem;
+}

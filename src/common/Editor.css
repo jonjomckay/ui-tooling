@@ -1,0 +1,7 @@
+.editor {
+    margin-top: 1rem;
+}
+
+.editor .monaco-editor {
+    padding: 0.5rem 0;
+}
