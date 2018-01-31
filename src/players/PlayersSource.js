@@ -8,7 +8,7 @@ class PlayersSource {
             }
         };
 
-        return axios.delete('https://flow.manywho.com/07f799a4-af7c-449b-ba7c-f1f526f7000a/play/' + name, request);
+        return axios.delete('https://staging.manywho.com/07f799a4-af7c-449b-ba7c-f1f526f7000a/play/' + name, request);
     }
 
     static get(token, name) {
@@ -18,7 +18,7 @@ class PlayersSource {
             }
         };
 
-        return axios.get('https://flow.manywho.com/07f799a4-af7c-449b-ba7c-f1f526f7000a/play/' + name, request);
+        return axios.get('https://staging.manywho.com/07f799a4-af7c-449b-ba7c-f1f526f7000a/play/' + name, request);
     }
 
     static list(token) {
@@ -28,7 +28,7 @@ class PlayersSource {
             }
         };
 
-        return axios.get('https://flow.manywho.com/07f799a4-af7c-449b-ba7c-f1f526f7000a/play', request);
+        return axios.get('https://staging.manywho.com/07f799a4-af7c-449b-ba7c-f1f526f7000a/play', request);
     }
 
     static save(token, name, content) {
@@ -40,7 +40,7 @@ class PlayersSource {
 
         const body = '=' + encodeURIComponent(content);
 
-        return axios.post('https://flow.manywho.com/07f799a4-af7c-449b-ba7c-f1f526f7000a/play/' + name, body, request);
+        return axios.post('https://staging.manywho.com/07f799a4-af7c-449b-ba7c-f1f526f7000a/play/' + name, body, request);
     }
 }
 

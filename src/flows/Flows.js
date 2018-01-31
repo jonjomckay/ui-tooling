@@ -23,7 +23,7 @@ class Flows extends Component {
 
     render() {
         const flows = this.state.flows.map(flow => {
-            const runLink = 'https://flow.manywho.com/' + this.props.tenant + '/play/default?flow-id=' + flow.id.id + '&flow-version-id=' + flow.id.versionId;
+            const runLink = 'https://staging.manywho.com/' + this.props.tenant + '/play/default?flow-id=' + flow.id.id + '&flow-version-id=' + flow.id.versionId;
 
             const actions = [
                 <a href={ runLink } target="_blank">

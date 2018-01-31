@@ -8,7 +8,7 @@ class ServiceSource {
             }
         };
 
-        return axios.get('https://flow.manywho.com/api/draw/1/element/service/' + id, request);
+        return axios.get('https://staging.manywho.com/api/draw/1/element/service/' + id, request);
     }
 
     static getTypes(token, id) {
@@ -18,7 +18,7 @@ class ServiceSource {
             }
         };
 
-        return axios.get('https://flow.manywho.com/api/draw/1/element/type', request)
+        return axios.get('https://staging.manywho.com/api/draw/1/element/type', request)
             .then(response => response.data.filter(type => type.serviceElementId === id));
     }
 
@@ -29,7 +29,7 @@ class ServiceSource {
             }
         };
 
-        return axios.get('https://flow.manywho.com/api/draw/1/element/service', request);
+        return axios.get('https://staging.manywho.com/api/draw/1/element/service', request);
     }
 }
 

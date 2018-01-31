@@ -8,7 +8,7 @@ class FlowsSource {
             }
         };
 
-        return axios.get('https://flow.manywho.com/api/draw/1/flow', request);
+        return axios.get('https://staging.manywho.com/api/draw/1/flow', request);
     }
 }
 

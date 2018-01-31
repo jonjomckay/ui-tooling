@@ -8,7 +8,7 @@ class MacroSource {
             }
         };
 
-        return axios.get('https://flow.manywho.com/api/draw/1/element/macro', request);
+        return axios.get('https://staging.manywho.com/api/draw/1/element/macro', request);
     }
 }
 
