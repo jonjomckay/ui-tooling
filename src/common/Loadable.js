@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import QueueAnim from 'rc-queue-anim';
-import { Button, Spin } from "antd";
+import { Spin } from "antd";
 
 export default class Loadable extends Component {
-    // render() {
-    //     if (this.props.isLoading) {
-    //         return <Spin size="large" style={{ marginTop: '10%', textAlign: 'center', width: '100%' }} />
-    //     }
-    //
-    //     return this.props.children;
-    // }
-
     state = {
         showSpinner: false
     };
@@ -49,9 +41,9 @@ export default class Loadable extends Component {
         return (
             <div>
                 <QueueAnim className={ this.props.className }>
-                        <div key="children">
-                            { content }
-                        </div>
+                    <div key="children">
+                        { content }
+                    </div>
                 </QueueAnim>
             </div>
         )
