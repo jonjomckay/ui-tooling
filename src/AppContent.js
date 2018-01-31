@@ -15,13 +15,19 @@ const FlowGraph = asyncComponent(() => import('./flows/graph/FlowGraph'));
 const HomeLogin = asyncComponent(() => import('./home/HomeLogin'));
 const HomeTenantSelector = asyncComponent(() => import('./home/HomeTenantSelector'));
 
-const MenuLink = (props) => (
-    <Route path={ props.to } exact={ true } children={ ({ match }) => (
-        <li className={ match ? 'ant-menu-item ant-menu-item-selected' : 'ant-menu-item' } role="menuitem">
-            <Link to={ props.to }>{ props.children }</Link>
-        </li>
-    )}/>
-);
+class MenuLink extends Component {
+    render() {
+        const props = this.props;
+
+        return (
+            <Route path={ props.to } exact={ true } children={ ({ match }) => (
+                <li className={ match ? 'ant-menu-item ant-menu-item-selected' : 'ant-menu-item' } role="menuitem">
+                    <Link to={ props.to }>{ props.children }</Link>
+                </li>
+            )}/>
+        );
+    }
+};
 
 class AppContent extends Component {
     onClickLogout = () => {
