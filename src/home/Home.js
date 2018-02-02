@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HomeStates from "./HomeStates";
+import HomeStatesByFlow from "./HomeStatesByFlow";
 
 export default class Home extends Component {
     render() {
@@ -8,6 +9,7 @@ export default class Home extends Component {
                 <h1>Dashboard</h1>
 
                 <HomeStates />
+                <HomeStatesByFlow />
             </div>
         )
     }
