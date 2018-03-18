@@ -38,7 +38,7 @@ class Flows extends Component {
             ];
 
             return (
-                <Col span={ 6 }>
+                <Col key={ flow.id.id } span={ 6 }>
                     <Card actions={ actions } bordered={ false } className="flow" title={ flow.developerName }>
                         <Card.Meta description={ flow.developerSummary || 'No summary available' } />
                     </Card>
