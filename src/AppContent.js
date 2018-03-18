@@ -5,6 +5,7 @@ import { Icon, Layout, Menu } from 'antd';
 
 import logo from './common/logo.svg';
 import asyncComponent from "./common/AsyncComponent";
+import State from "./states/State";
 const Home = asyncComponent(() => import('./home/Home'));
 const Flows = asyncComponent(() => import('./flows/Flows'));
 const Players = asyncComponent(() => import('./players/Players'));
@@ -105,6 +106,7 @@ class AppContent extends Component {
                         <Route exact path="/flows" component={ Flows } />
                         <Route exact path="/flows/:id/graph" component={ FlowGraph } />
                         <Route exact path="/players" component={ Players } />
+                        <Route exact path="/states/:id" component={ State } />
                     </div>
                 )
             } else {
