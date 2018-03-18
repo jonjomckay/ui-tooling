@@ -28,8 +28,6 @@ export default class Loadable extends Component {
     render() {
         let content = this.props.children;
 
-        console.log(this.state.showSpinner);
-
         if (this.state.showSpinner) {
             content = (
                 <div className="loadable">

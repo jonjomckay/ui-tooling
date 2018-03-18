@@ -51,8 +51,6 @@ class ServiceEdit extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        console.log(this.props.form);
-
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
