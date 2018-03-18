@@ -8,7 +8,7 @@ class FlowsSource {
             }
         };
 
-        return axios.get('https://staging.manywho.com/api/draw/1/flow', request);
+        return axios.get(process.env.REACT_APP_BASE_URI + '/api/draw/1/flow', request);
     }
 }
 

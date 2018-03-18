@@ -32,7 +32,7 @@ class HomeStates extends Component {
             }
         };
 
-        axios.get('https://staging.manywho.com/api/admin/1/states', request)
+        axios.get(process.env.REACT_APP_BASE_URI + '/api/admin/1/states', request)
             .then(response => {
                 this.setState(prevState => {
                     return {

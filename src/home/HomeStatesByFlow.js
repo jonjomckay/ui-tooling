@@ -34,7 +34,7 @@ class HomeStatesByFlow extends Component {
             }
         };
 
-        axios.get('https://staging.manywho.com/api/admin/1/states/flow', request)
+        axios.get(process.env.REACT_APP_BASE_URI + '/api/admin/1/states/flow', request)
             .then(response => {
                 this.setState(prevState => {
                     return {

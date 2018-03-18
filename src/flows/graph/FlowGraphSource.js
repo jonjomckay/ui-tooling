@@ -8,7 +8,7 @@ class FlowGraphSource {
             }
         };
 
-        return axios.get('https://staging.manywho.com/api/draw/1/graph/flow/' + id, request);
+        return axios.get(process.env.REACT_APP_BASE_URI + '/api/draw/1/graph/flow/' + id, request);
     }
 }
 
