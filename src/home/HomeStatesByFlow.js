@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { Divider, Table } from 'antd';
-import timeago from 'timeago.js';
+import { Table } from 'antd';
 
 class HomeStatesByFlow extends Component {
     state = {
@@ -69,16 +68,15 @@ class HomeStatesByFlow extends Component {
     render() {
         return (
             <div>
-                <h2>States</h2>
-
                 <Table dataSource={ this.state.states }
                        loading={ this.state.isLoading }
                        onChange={ this.onTableChange }
                        pagination={ this.state.pagination }
                        rowKey={ state => state.id }
+                       size="middle"
                 >
-                    <Table.Column title="Count" dataIndex="count" key="count" sorter={ true } />
-                    <Table.Column title="ID" dataIndex="id" key="id" sorter={ true } />
+                    <Table.Column title="# of States" dataIndex="count" key="count" sorter={ true } />
+                    <Table.Column title="Flow ID" dataIndex="id" key="id" sorter={ true } />
                     <Table.Column title="Flow Name" dataIndex="developerName" key="developerName" sorter={ true } />
                 </Table>
             </div>
