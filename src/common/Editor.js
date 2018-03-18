@@ -13,13 +13,6 @@ export default class Editor extends Component {
             selectOnLineNumbers: true
         };
 
-        const requireConfig = {
-            url: 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.1/require.min.js',
-            paths: {
-                'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.10.1/min/vs'
-            }
-        };
-
         return (
             <div className="editor">
                 <MonacoEditor
@@ -30,7 +23,6 @@ export default class Editor extends Component {
                     options={ options }
                     onChange={ this.props.onChange }
                     editorDidMount={ this.editorDidMount }
-                    requireConfig={ requireConfig }
                 />
             </div>
         )
