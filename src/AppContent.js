@@ -86,6 +86,12 @@ class AppContent extends Component {
                                     <Icon type="team" /> Users
                                 </Menu.Item>
                             </Menu.SubMenu>
+
+                            <Menu.Item>
+                                <a onClick={ this.onClickLogout }>
+                                    <Icon type="logout" /> Logout
+                                </a>
+                            </Menu.Item>
                         </Menu>
                     </Layout.Header>
                 );
