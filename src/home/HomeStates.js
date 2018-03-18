@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { Button, Divider, Table } from 'antd';
+import { Badge, Button, Divider, Table } from 'antd';
 import timeago from 'timeago.js';
+import { Link } from "react-router-dom";
+import StateStatus from "../states/StateStatus";
 
 class HomeStates extends Component {
     state = {
@@ -61,6 +63,10 @@ class HomeStates extends Component {
         this.setState(stateChange, this.fetchStates);
     };
 
+    renderStatus = (text, state) => {
+        return <StateStatus state={ state } />
+    };
+
     render() {
         return (
             <div>
@@ -80,7 +86,12 @@ class HomeStates extends Component {
                        rowKey={ state => state.id }
                        size="middle"
                 >
-                    <Table.Column title="ID" dataIndex="id" key="id" />
+                    <Table.Column title="Status" key="status" render={ this.renderStatus } />
+                    <Table.Column title="ID" key="id" render={ (text, state) => (
+                        <span>
+                            <Link to={ '/states/' + state.id }>{ state.id }</Link>
+                        </span>
+                    )} />
                     <Table.Column title="Flow Name" dataIndex="currentFlowDeveloperName" key="currentFlowDeveloperName" />
                     <Table.Column title="Current User" key="currentRunningUserEmail" render={ (text, state) => (
                         <span>
