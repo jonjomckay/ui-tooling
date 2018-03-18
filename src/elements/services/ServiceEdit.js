@@ -163,12 +163,13 @@ class ServiceEdit extends Component {
 
                     <div className="information-section features">
                         <h3>
-                            Features
                             <Tooltip title="The features this service supports usage of inside flows">
                                 <span className="tooltip">
                                     <Icon type="question-circle-o" />
                                 </span>
                             </Tooltip>
+
+                            Features
                         </h3>
 
                         { features }
@@ -176,12 +177,13 @@ class ServiceEdit extends Component {
 
                     <div className="information-section actions">
                         <h3>
-                            Actions
                             <Tooltip title="The actions this service provides, for usage in Message elements">
                                 <span className="tooltip">
                                     <Icon type="question-circle-o" />
                                 </span>
                             </Tooltip>
+
+                            Actions
                         </h3>
 
                         { actions.length ?
@@ -190,18 +192,20 @@ class ServiceEdit extends Component {
 
                     <div className="information-section types">
                         <h3>
-                            Types
                             <Tooltip title="The types this service installed in your tenant">
                                 <span className="tooltip">
                                     <Icon type="question-circle-o" />
                                 </span>
                             </Tooltip>
+
+                            Types
                         </h3>
 
                         <Table
                             bordered={ false }
                             dataSource={ this.state.types }
                             loading={ this.state.isLoadingTypes }
+                            locale={{ emptyText: 'No types' }}
                             showHeader={ false }
                             size="small"
                         >
