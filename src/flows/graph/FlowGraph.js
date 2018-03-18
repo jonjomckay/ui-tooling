@@ -9,6 +9,9 @@ class FlowGraph extends Component {
     graph = null;
     state = {
         graph: {
+            id: {
+
+            },
             mapElements: []
         },
         isLoading: true
@@ -23,6 +26,47 @@ class FlowGraph extends Component {
                 });
             })
             .then(this.renderCanvas);
+    };
+
+    saveMapElement = (mapElement) => {
+        return FlowGraphSource.save(this.props.token, {
+            id: this.state.graph.id,
+            mapElements: [mapElement]
+        }).then(response => this.setState({
+            graph: response.data,
+            isLoading: false
+        })).then(this.renderCanvas);
+    };
+
+    onElementMove = (handler, event) => {
+        const cells = event.getProperty('cells');
+
+        cells.forEach(cell => {
+            let mapElement = this.state.graph.mapElements.find(element => element.id === cell.id);
+            if (mapElement) {
+                this.saveMapElement({
+                    ...mapElement,
+                    x: cell.geometry.x,
+                    y: cell.geometry.y
+                });
+            }
+        });
+    };
+
+    onOutcomeCreate = (handler, event) => {
+        const edge = event.getProperty('cell');
+
+        // We call this after the outcome edits are submitted, which updates the edge's label in the graph
+        const onChangeLabel = (value) => {
+            handler.graph.getModel().setValue(edge, value);
+        };
+
+        this.props.dispatch({
+            type: 'TOGGLE_OUTCOME_EDITING',
+            onChangeLabel: onChangeLabel,
+            source: edge.source.id,
+            target: edge.target.id
+        });
     };
 
     renderCanvas = () => {
@@ -61,6 +105,8 @@ class FlowGraph extends Component {
             graph.getModel().addListener(mxEvent.UNDO, undoListener);
             graph.getView().addListener(mxEvent.UNDO, undoListener);
 
+            graph.addListener(mxEvent.MOVE_CELLS, this.onElementMove);
+
             this.props.dispatch({
                 type: 'SET_UNDO_MANAGER',
                 handler: undoManager
@@ -71,21 +117,7 @@ class FlowGraph extends Component {
             });
 
             // Add outcome creation handling
-            graph.connectionHandler.addListener(mxEvent.CONNECT, (handler, event) => {
-                const edge = event.getProperty('cell');
-
-                // We call this after the outcome edits are submitted, which updates the edge's label in the graph
-                const onChangeLabel = (value) => {
-                    graph.getModel().setValue(edge, value);
-                };
-
-                this.props.dispatch({
-                    type: 'TOGGLE_OUTCOME_EDITING',
-                    onChangeLabel: onChangeLabel,
-                    source: edge.source.id,
-                    target: edge.target.id
-                });
-            });
+            graph.connectionHandler.addListener(mxEvent.CONNECT, this.onOutcomeCreate);
 
             // Get the root parent for inserting new cells
             const parent = graph.getDefaultParent();
