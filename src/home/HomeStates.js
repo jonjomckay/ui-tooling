@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { Divider, Table } from 'antd';
+import { Button, Divider, Table } from 'antd';
 import timeago from 'timeago.js';
 
 class HomeStates extends Component {
     state = {
         isLoading: true,
         pagination: {
-
+            current: 1,
+            pageSize: 10
         },
         states: []
     };
@@ -17,7 +18,7 @@ class HomeStates extends Component {
         this.fetchStates();
     };
 
-    fetchStates = (page = 1, pageSize = 10) => {
+    fetchStates = () => {
         this.setState({
             isLoading: true
         });
@@ -27,8 +28,8 @@ class HomeStates extends Component {
                 'Authorization': this.props.token
             },
             params: {
-                page,
-                pageSize
+                page: this.state.pagination.current,
+                pageSize: this.state.pagination.pageSize
             }
         };
 
@@ -37,7 +38,7 @@ class HomeStates extends Component {
                 this.setState(prevState => {
                     return {
                         pagination: {
-                            ...prevState,
+                            ...prevState.pagination,
                             total: response.data._meta.total
                         },
                         states: response.data.items
@@ -53,23 +54,31 @@ class HomeStates extends Component {
     };
 
     onTableChange = (pagination) => {
-        this.setState({
+        const stateChange = {
             pagination: pagination
-        });
+        };
 
-        this.fetchStates(pagination.current, pagination.pageSize);
+        this.setState(stateChange, this.fetchStates);
     };
 
     render() {
         return (
             <div>
-                <h2>States</h2>
-
+                <div style={{ marginBottom: 16 }}>
+                    <Button
+                        type="primary"
+                        onClick={ this.fetchStates }
+                        loading={ this.state.isLoading }
+                    >
+                        Reload
+                    </Button>
+                </div>
                 <Table dataSource={ this.state.states }
                        loading={ this.state.isLoading }
                        onChange={ this.onTableChange }
                        pagination={ this.state.pagination }
                        rowKey={ state => state.id }
+                       size="middle"
                 >
                     <Table.Column title="ID" dataIndex="id" key="id" />
                     <Table.Column title="Flow Name" dataIndex="currentFlowDeveloperName" key="currentFlowDeveloperName" />
