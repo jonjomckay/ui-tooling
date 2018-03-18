@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ServiceSource from './ServiceSource';
 import timeago from 'timeago.js';
 import { Divider, Table } from "antd";
+import Whos from "../../utils/Whos";
 
 class Services extends Component {
     state = {
@@ -29,7 +30,7 @@ class Services extends Component {
                     <Table.Column title="URI" dataIndex="uri" key="uri" />
                     <Table.Column title="Modified" key="dateModified" render={ (text, record) => (
                         <span>
-                            { timeago().format(record.dateModified) } by { record.whoModified.firstName } { record.whoModified.lastName }
+                            { timeago().format(record.dateModified) } by { Whos.fullName(record.whoModified) }
                         </span>
                     )} />
                     <Table.Column title="Actions" key="actions" render={ (text, record) => (

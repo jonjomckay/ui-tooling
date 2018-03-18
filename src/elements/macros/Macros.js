@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Button, Icon, Table } from "antd";
 import timeago from 'timeago.js';
 import MacroSource from "./MacroSource";
+import Whos from "../../utils/Whos";
 
 class Macros extends Component {
     state = {
@@ -27,12 +28,12 @@ class Macros extends Component {
                     <Table.Column title="Name" dataIndex="developerName" key="developerName" />
                     <Table.Column title="Created" key="dateCreated" render={ (text, record) => (
                         <span>
-                            { timeago().format(record.dateCreated) } by { record.whoCreated.firstName } { record.whoCreated.lastName }
+                            { timeago().format(record.dateCreated) } by { Whos.fullName(record.whoCreated) }
                         </span>
                     )} />
                     <Table.Column title="Modified" key="dateModified" render={ (text, record) => (
                         <span>
-                            { timeago().format(record.dateModified) } by { record.whoModified.firstName } { record.whoModified.lastName }
+                            { timeago().format(record.dateModified) } by { Whos.fullName(record.whoModified) }
                         </span>
                     )} />
                     <Table.Column title="Actions" key="actions" render={ (text, record) => (
